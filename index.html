@@ -369,8 +369,8 @@
         }
 
         function showVirus() {
-            let xvalue = Math.floor(Math.random() * 10000);
-            let yvalue = Math.floor(Math.random() * 10000);
+            let xvalue = Math.floor(Math.random() * 100);
+            let yvalue = Math.floor(Math.random() * 100);
             const myWindow = window.open("", "", "width=300,height=200, top=" + xvalue + ", left=" + yvalue);
             myWindow.document.write("<body style='background-size: 100%; background-image: url(imagens/bug.gif); text-justify:center; font-family: Brush Script MT, cursive; font-weight: 900; font-size: 40px; display: flex; justify-content: center; align-items: center; color: white; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;'><p>VÍRUS PESADO VC SE FERROU</p></body>");
         }
@@ -384,7 +384,7 @@
             }
 
             if (nextScene == 4) {
-                for (let i = 0; i <= 103; i++) {
+                for (let i = 0; i <= 10; i++) {
                     showVirus();
                 }
             }
