@@ -2,398 +2,435 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="imagens/bebe_favicon.png">
-    <title>Baby hurts</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="imagens/bebe_favicon.png">
+  <title>Baby hurts</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Tahoma, sans-serif;
-            background-image: url('imagens/anima_blue.gif');
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
+    body {
+      font-family: Tahoma, sans-serif;
+      background-image: url('imagens/anima_blue.gif');
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        .game-container {
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: transparent;
-        }
+    .game-container {
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: transparent;
+    }
 
-        .background {
-            /* position: absolute;
+    .background {
+      /* position: absolute;
             top: 0;
             left: 0; */
-            margin: 1em;
-            width: 400px;
-            height: 400px;
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
+      margin: 1em;
+      width: 400px;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
 
-        .character-image {
-            display: flex;
-            position: absolute;
-            top: 200px;
-            align-items: center;
-            width: 250px;
-            height: 250px;
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
+    .character-image {
+      display: flex;
+      position: absolute;
+      top: 200px;
+      align-items: center;
+      width: 250px;
+      height: 250px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
 
-        .dialogue-box {
-            font-family: Tahoma, sans-serif;
-            font-weight: 100;
-            margin: 20px;
-            line-height: 1.5;
-            border-radius: 5px;
-        }
+    .dialogue-box {
+      font-family: Tahoma, sans-serif;
+      font-weight: 100;
+      margin: 20px;
+      line-height: 1.5;
+      border-radius: 5px;
+    }
 
-        .wordart {
-            font-family: Arial, sans-serif;
-            font-size: 2.5em;
-            max-width: 1000px;
-            line-height: 1em;
-            font-weight: bold;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            color: white;
+    .wordart {
+      font-family: Arial, sans-serif;
+      font-size: 2.5em;
+      max-width: 1000px;
+      line-height: 1em;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: white;
 
-        }
+    }
 
-        .wordart.rainbow {
-            transform: scale(1, 1.5);
-            -webkit-transform: scale(1, 1.5);
-            -moz-transform: scale(1, 1.5);
-            -o-transform: scale(1, 1.5);
-            -ms-transform: scale(1, 1.5);
-        }
+    .wordart.rainbow {
+      transform: scale(1, 1.5);
+      -webkit-transform: scale(1, 1.5);
+      -moz-transform: scale(1, 1.5);
+      -o-transform: scale(1, 1.5);
+      -ms-transform: scale(1, 1.5);
+    }
 
-        .wordart.rainbow .text {
-            background: red;
-            background: -webkit-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
-            background: -o-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
-            background: -moz-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
-            background: linear-gradient(to right, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .wordart.rainbow .text {
+      background: red;
+      background: -webkit-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+      background: -o-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+      background: -moz-linear-gradient(left, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+      background: linear-gradient(to right, #b306a9, #ef2667, #f42e2c, #ffa509, #fdfc00, #55ac2f, #0b13fd, #a804af);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        .choices {
-            display: flex;
-            justify-content: center;
-        }
+    .choices {
+      display: flex;
+      justify-content: center;
+    }
 
-        button {
-            display: block;
-            border-radius: 0;
-            color: black;
-            cursor: pointer;
-            background-color: #c0c0c0;
-            font-size: 20px;
-            border-top: 2px solid white;
-            border-left: 2px solid white;
-            margin: 20px;
-            padding: 8px;
-        }
+    button {
+      display: block;
+      border-radius: 0;
+      color: black;
+      cursor: pointer;
+      background-color: #c0c0c0;
+      font-size: 20px;
+      border-top: 2px solid white;
+      border-left: 2px solid white;
+      margin: 20px;
+      padding: 8px;
+    }
 
-        button:hover {
-            color: white;
-            text-decoration: underline;
-            background-color: #838383;
-            border-top: 2px solid #000000;
-            border-left: 2px solid #000000;
-            border-bottom: 2px solid #ffffff;
-            border-right: 2px solid #ffffff;
-        }
+    button:hover {
+      color: white;
+      text-decoration: underline;
+      background-color: #838383;
+      border-top: 2px solid #000000;
+      border-left: 2px solid #000000;
+      border-bottom: 2px solid #ffffff;
+      border-right: 2px solid #ffffff;
+    }
 
-        .laterald {
-            width: 9em;
-            height: 38rem;
-            background-color: white;
-            position: absolute;
-            top: 21em;
-            right: 12em;
-            background-image: url("imagens/freekoff.gif");
-            background-repeat: no-repeat;
-            background-size: 144px;
-        }
+    .laterald {
+      width: 9em;
+      height: 38rem;
+      background-color: white;
+      position: absolute;
+      top: 21em;
+      right: 12em;
+      background-image: url("imagens/freekoff.gif");
+      background-repeat: no-repeat;
+      background-size: 144px;
+    }
 
-        .laterale {
-            width: 9em;
-            height: 38rem;
-            background-color: white;
-            position: absolute;
-            top: 21em;
-            left: 12em;
-            background-image: url(imagens/bicia.gif);
-            background-repeat: no-repeat;
-            background-size: 144px;
-        }
-    </style>
+    .laterale {
+      width: 9em;
+      height: 38rem;
+      background-color: white;
+      position: absolute;
+      top: 21em;
+      left: 12em;
+      background-image: url(imagens/bicia.gif);
+      background-repeat: no-repeat;
+      background-size: 144px;
+    }
+
+    .virus {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-image: url('imagens/bug.gif');
+      background-size: cover;
+      z-index: 1000;
+      animation: fadeOut 3s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="laterald"></div>
-    <div class="laterale"></div>
-    <audio src="audio/nono.wav" id="myAudio">
-    </audio>
-    <div class="game-container">
-        <div class="dialogue-box">
-            <p class="wordart rainbow text"><span class="text" id="dialogue-text">Bem-vindo à sua visual novel!</span>
-            </p>
-        </div>
-        <div class="character-image" id="character-image"></div>
-        <div class="background" id="background"></div>
-        <div class="choices">
-            <button onclick="choose(1)">Escolha 1</button>
-            <button onclick="choose(2)">Escolha 2</button>
-            <!-- <button onclick="choose(3)">Escolha 3</button> -->
-
-        </div>
+  <div class="laterald"></div>
+  <div class="laterale"></div>
+  <audio src="audio/nono.wav" id="myAudio">
+  </audio>
+  <div class="game-container">
+    <div class="dialogue-box">
+      <p class="wordart rainbow text"><span class="text" id="dialogue-text">Bem-vindo à sua visual novel!</span>
+      </p>
     </div>
+    <div class="character-image" id="character-image"></div>
+    <div class="background" id="background"></div>
+    <div class="choices">
+      <button onclick="choose(1)">Escolha 1</button>
+      <button onclick="choose(2)">Escolha 2</button>
+      <!-- <button onclick="choose(3)">Escolha 3</button> -->
 
-    <script>
+    </div>
+  </div>
 
-        let currentScene = 0;
+  <script>
 
-        const dialogueText = document.getElementById("dialogue-text");
-        const choices = document.querySelector(".choices");
-        const background = document.getElementById("background");
-        const characterImage = document.getElementById("character-image");
+    let currentScene = 0;
 
-        const scenes = [
-            {
-                text: "Parabéns, você é um bebê lindo!",
-                backgroundImage: "url('imagens/ParabensBebe.gif')",  // Exemplo de imagem de fundo
-                characterImageUrl: "url('imagens/bebe.gif')", // Imagem do personagem
-                options: [
-                    { text: "crescer", nextScene: 1 },
+    const dialogueText = document.getElementById("dialogue-text");
+    const choices = document.querySelector(".choices");
+    const background = document.getElementById("background");
+    const characterImage = document.getElementById("character-image");
 
-                ]
-            },
-            {
-                text: "Um dia, voltando da escola, você encontra uma bicicleta. O que você faz a seguir?",
-                backgroundImage: "url('imagens/bicicleta.gif')",
-                characterImageUrl: "url('imagens/personagem-2.png')",
-                options: [
-                    { text: "Deixa pra lá, eu nem sei andar de bicicleta! Vou para casa almoçar", nextScene: 2 },
-                    { text: "Eu nunca andei de bicicleta sem rodinha. Vou tentar!", nextScene: 5 },
-                    { text: "Está sem cadeado. Vou procurar o dono e devolver.", nextScene: 9 }
-                ]
-            },
-            {
-                text: "Ao chegar em casa, sua mãe/pai te pede para pegar uma lata de milho no armário. O que você acha?",
-                backgroundImage: "url('imagens/maepede.gif')",
-                characterImageUrl: "url('imagens/milho.gif')",
-                options: [
-                    { text: "Amo milho! Vou pegar, apesar da lata estar um pouco inchada...", nextScene: 3 },
-                    { text: "Não quero milho, vou comer só carne", nextScene: 13 }
-                ]
-            },
-            {
-                text: "Você contraiu botulismo. Ainda tem muito o que aprender...",
-                backgroundImage: "url('imagens/contraiuBotulismo.gif')",
-                characterImageUrl: "url('imagens/personagem-3.png')",
-                options: [
-                    { text: "reencarnar", nextScene: 0 }
-                ]
-            },
-            {
-                text: "Que almoço desagradável, a carne realmente estava estragada e você está com virose...",
-                backgroundImage: "url('imagens/virose.gif')",
-                characterImageUrl: "url('imagens/personagem-3.png')",
-                options: [
-                    { text: "reencarnar", nextScene: 0 }
-                ]
-            },
-            {
-                text: "Você conseguiu andar um pouco mas se desequilibrou e acabou caindo em um arame farpado. Seu joelho está arranhado. O que fazer?",
-                backgroundImage: "url('imagens/perna.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Lavar o machucado", nextScene: 7 },
-                    { text: "Sair sem olhar pra trás", nextScene: 6 }
-                ]
-            },
-            {
-                text: "Você pegou tétano e morreu no hospital pois não tomou vacina.",
-                backgroundImage: "url('imagens/tetano2.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "reencarnar", nextScene: 0 }
-                ]
-            },
-            {
-                text: "Você, que já tinha tomado vacina, não pegou nada e evoluiu espiritualmente.",
-                backgroundImage: "url('imagens/espirito.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "encerrar o ciclo de reencarnação ", nextScene: 8 }
-                ]
-            },
-            {
-                text: "NIRVANA",
-                backgroundImage: "url('imagens/nirvana.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
+    const scenes = [
+      {
+        text: "Parabéns, você é um bebê lindo!",
+        backgroundImage: "url('imagens/ParabensBebe.gif')",  // Exemplo de imagem de fundo
+        characterImageUrl: "url('imagens/bebe.gif')", // Imagem do personagem
+        options: [
+          { text: "crescer", nextScene: 1 },
 
-            },
-            {
-                text: "Você encontrou a dona da bicicleta. Ela está tossindo... Será que é uma boa ideia falar com ela?",
-                backgroundImage: "url('imagens/devolveBike.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Acho melhor não... ", nextScene: 16 },
-                    { text: "Ah, não tem problema. Vou mesmo assim.", nextScene: 11 }
-                ]
-            },
-            {
-                text: "O tempo cura tudo... Melhor voltar para casa",
-                backgroundImage: "url('imagens/tempoCura.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Ir para casa almoçar ", nextScene: 2 }
-                ]
-            },
-            {
-                text: "Você devolve a bicicleta e ela te abraça. O problema é que ela tosse em cima de você...",
-                backgroundImage: "url('imagens/devolveAbraço.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Você começa a se sentir mal", nextScene: 12 }
-                ]
-            },
-            {
-                text: "Você pegou tuberculose. ",
-                backgroundImage: "url('imagens/tuberculose.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Reencarnar", nextScene: 0 }
-                ]
-            },
-            {
-                text: "Essa carne tem um sabor estranho. Você prefere:",
-                backgroundImage: "url('imagens/carne.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Continuar comendo, deve ser só um tempero diferente.", nextScene: 4 },
-                    { text: "Não comer mais, vai que está estragada!", nextScene: 14 }
-                ]
-            },
-            {
-                text: "Ufa! Você evitou comer comida estragada e continuou saudável.",
-                backgroundImage: "url('imagens/estragada.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Crescer mais um pouco", nextScene: 15 },
+        ]
+      },
+      {
+        text: "Um dia, voltando da escola, você encontra uma bicicleta. O que você faz a seguir?",
+        backgroundImage: "url('imagens/bicicleta.gif')",
+        characterImageUrl: "url('imagens/personagem-2.png')",
+        options: [
+          { text: "Deixa pra lá, eu nem sei andar de bicicleta! Vou para casa almoçar", nextScene: 2 },
+          { text: "Eu nunca andei de bicicleta sem rodinha. Vou tentar!", nextScene: 5 },
+          { text: "Está sem cadeado. Vou procurar o dono e devolver.", nextScene: 9 }
+        ]
+      },
+      {
+        text: "Ao chegar em casa, sua mãe/pai te pede para pegar uma lata de milho no armário. O que você acha?",
+        backgroundImage: "url('imagens/maepede.gif')",
+        characterImageUrl: "url('imagens/milho.gif')",
+        options: [
+          { text: "Amo milho! Vou pegar, apesar da lata estar um pouco inchada...", nextScene: 3 },
+          { text: "Não quero milho, vou comer só carne", nextScene: 13 }
+        ]
+      },
+      {
+        text: "Você contraiu botulismo. Ainda tem muito o que aprender...",
+        backgroundImage: "url('imagens/contraiuBotulismo.gif')",
+        characterImageUrl: "url('imagens/personagem-3.png')",
+        options: [
+          { text: "reencarnar", nextScene: 0 }
+        ]
+      },
+      {
+        text: "Que almoço desagradável, a carne realmente estava estragada e você está com virose...",
+        backgroundImage: "url('imagens/virose.gif')",
+        characterImageUrl: "url('imagens/personagem-3.png')",
+        options: [
+          { text: "reencarnar", nextScene: 0 }
+        ]
+      },
+      {
+        text: "Você conseguiu andar um pouco mas se desequilibrou e acabou caindo em um arame farpado. Seu joelho está arranhado. O que fazer?",
+        backgroundImage: "url('imagens/perna.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Lavar o machucado", nextScene: 7 },
+          { text: "Sair sem olhar pra trás", nextScene: 6 }
+        ]
+      },
+      {
+        text: "Você pegou tétano e morreu no hospital pois não tomou vacina.",
+        backgroundImage: "url('imagens/tetano2.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "reencarnar", nextScene: 0 }
+        ]
+      },
+      {
+        text: "Você, que já tinha tomado vacina, não pegou nada e evoluiu espiritualmente.",
+        backgroundImage: "url('imagens/espirito.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "encerrar o ciclo de reencarnação ", nextScene: 8 }
+        ]
+      },
+      {
+        text: "NIRVANA",
+        backgroundImage: "url('imagens/nirvana.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
 
-                ]
-            },
-            {
-                text: "Agora você é adulto e sua família está crescendo...",
-                backgroundImage: "url('imagens/filho.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Novo membro da família", nextScene: 0 },
+      },
+      {
+        text: "Você encontrou a dona da bicicleta. Ela está tossindo... Será que é uma boa ideia falar com ela?",
+        backgroundImage: "url('imagens/devolveBike.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Acho melhor não... ", nextScene: 16 },
+          { text: "Ah, não tem problema. Vou mesmo assim.", nextScene: 11 }
+        ]
+      },
+      {
+        text: "O tempo cura tudo... Melhor voltar para casa",
+        backgroundImage: "url('imagens/tempoCura.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Ir para casa almoçar ", nextScene: 2 }
+        ]
+      },
+      {
+        text: "Você devolve a bicicleta e ela te abraça. O problema é que ela tosse em cima de você...",
+        backgroundImage: "url('imagens/devolveAbraço.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Você começa a se sentir mal", nextScene: 12 }
+        ]
+      },
+      {
+        text: "Você pegou tuberculose. ",
+        backgroundImage: "url('imagens/tuberculose.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Reencarnar", nextScene: 0 }
+        ]
+      },
+      {
+        text: "Essa carne tem um sabor estranho. Você prefere:",
+        backgroundImage: "url('imagens/carne.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Continuar comendo, deve ser só um tempero diferente.", nextScene: 4 },
+          { text: "Não comer mais, vai que está estragada!", nextScene: 14 }
+        ]
+      },
+      {
+        text: "Ufa! Você evitou comer comida estragada e continuou saudável.",
+        backgroundImage: "url('imagens/estragada.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Crescer mais um pouco", nextScene: 15 },
 
-                ]
-            },
-            {
-                text: "Você sente um peso na consciência. Tem certeza que não vai devolver para ela?",
-                backgroundImage: "url('imagens/devolve2.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Tudo bem, é melhor devolver", nextScene: 11 },
-                    { text: "Prefiro deixar aqui e ir para casa", nextScene: 17 }
-                ]
-            },
-            {
-                text: "Lar doce lar.",
-                backgroundImage: "url('imagens/casaFrente.gif')",
-                characterImageUrl: "url('imagens/personagem-4.png')",
-                options: [
-                    { text: "Entrar", nextScene: 2 },
+        ]
+      },
+      {
+        text: "Agora você é adulto e sua família está crescendo...",
+        backgroundImage: "url('imagens/filho.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Novo membro da família", nextScene: 0 },
 
-                ]
-            }
-        ];
+        ]
+      },
+      {
+        text: "Você sente um peso na consciência. Tem certeza que não vai devolver para ela?",
+        backgroundImage: "url('imagens/devolve2.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Tudo bem, é melhor devolver", nextScene: 11 },
+          { text: "Prefiro deixar aqui e ir para casa", nextScene: 17 }
+        ]
+      },
+      {
+        text: "Lar doce lar.",
+        backgroundImage: "url('imagens/casaFrente.gif')",
+        characterImageUrl: "url('imagens/personagem-4.png')",
+        options: [
+          { text: "Entrar", nextScene: 2 },
+
+        ]
+      }
+    ];
 
 
-        var x = document.getElementById("myAudio");
+    var x = document.getElementById("myAudio");
 
-        function playAudio() {
-            x.play();
+    function playAudio() {
+      x.play();
+    }
+
+    function updateScene() {
+      const scene = scenes[currentScene];
+
+      // Atualiza o texto do diálogo
+      dialogueText.textContent = scene.text;
+
+      // Atualiza a imagem de fundo
+      background.style.backgroundImage = scene.backgroundImage;
+
+      // Atualiza a imagem do personagem
+      characterImage.style.backgroundImage = scene.characterImageUrl;
+
+      // Limpa as opções anteriores e cria novas
+      choices.innerHTML = '';
+      scene.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option.text;
+        button.onclick = () => choose(option.nextScene);
+        choices.appendChild(button);
+      });
+    }
+
+    function showVirus() {
+    const virus = document.createElement('div');
+    virus.classList.add('virus');
+    
+    virus.style.top = Math.floor(Math.random() * window.innerHeight) + 'px';
+    virus.style.left = Math.floor(Math.random() * window.innerWidth) + 'px';
+    
+    document.body.appendChild(virus);
+
+    setTimeout(() => {
+        virus.remove();
+    }, 3000); // Remove após 3 segundos
+}
+
+
+    function choose(nextScene) {
+      currentScene = nextScene;
+      updateScene();
+
+      if (nextScene == 3 || nextScene == 4 || nextScene == 6 || nextScene == 12) {
+        playAudio();
+      }
+
+      if (nextScene == 4) {
+    let count = 0;
+    let interval = setInterval(() => {
+        if (count >= 100) {
+            clearInterval(interval);
+        } else {
+            showVirus();
+            playAudio();
+            count++;
         }
+    }, 300); // um vírus a cada 400 ms
+}
 
-        function updateScene() {
-            const scene = scenes[currentScene];
+    }
 
-            // Atualiza o texto do diálogo
-            dialogueText.textContent = scene.text;
+    updateScene(); // Inicializa a primeira cena
 
-            // Atualiza a imagem de fundo
-            background.style.backgroundImage = scene.backgroundImage;
-
-            // Atualiza a imagem do personagem
-            characterImage.style.backgroundImage = scene.characterImageUrl;
-
-            // Limpa as opções anteriores e cria novas
-            choices.innerHTML = '';
-            scene.options.forEach(option => {
-                const button = document.createElement("button");
-                button.textContent = option.text;
-                button.onclick = () => choose(option.nextScene);
-                choices.appendChild(button);
-            });
-        }
-
-        function showVirus() {
-            let xvalue = Math.floor(Math.random() * 100);
-            let yvalue = Math.floor(Math.random() * 100);
-            const myWindow = window.open("", "", "width=300,height=200, top=" + xvalue + ", left=" + yvalue);
-            myWindow.document.write("<body style='background-size: 100%; background-image: url(imagens/bug.gif); text-justify:center; font-family: Brush Script MT, cursive; font-weight: 900; font-size: 40px; display: flex; justify-content: center; align-items: center; color: white; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;'><p>VÍRUS PESADO VC SE FERROU</p></body>");
-        }
-
-        function choose(nextScene) {
-            currentScene = nextScene;
-            updateScene();
-
-            if(nextScene == 3 || nextScene == 6 || nextScene == 12){
-                playAudio();
-            }
-
-            if (nextScene == 4) {
-                for (let i = 0; i <= 10; i++) {
-                    showVirus();
-                    playAudio();
-                }
-            }
-        }
-
-        updateScene(); // Inicializa a primeira cena
-
-    </script>
+  </script>
 </body>
 
 </html>
