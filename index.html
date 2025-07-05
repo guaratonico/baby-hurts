@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="imagens/bebe_favicon.png">
     <title>Baby hurts</title>
@@ -39,7 +39,7 @@
             /* position: absolute;
             top: 0;
             left: 0; */
-            margin:1em;
+            margin: 1em;
             width: 400px;
             height: 400px;
             background-size: cover;
@@ -115,7 +115,7 @@
             border-top: 2px solid white;
             border-left: 2px solid white;
             margin: 20px;
-            padding:8px;
+            padding: 8px;
         }
 
         button:hover {
@@ -127,13 +127,42 @@
             border-bottom: 2px solid #ffffff;
             border-right: 2px solid #ffffff;
         }
+
+        .laterald {
+            width: 9em;
+            height: 38rem;
+            background-color: white;
+            position: absolute;
+            top: 21em;
+            right: 12em;
+            background-image: url("imagens/freekoff.gif");
+            background-repeat: no-repeat;
+            background-size: 144px;
+        }
+
+        .laterale {
+            width: 9em;
+            height: 38rem;
+            background-color: white;
+            position: absolute;
+            top: 21em;
+            left: 12em;
+            background-image: url(imagens/bicia.gif);
+            background-repeat: no-repeat;
+            background-size: 144px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="laterald"></div>
+    <div class="laterale"></div>
+    <audio src="audio/nono.wav" id="myAudio">
+    </audio>
     <div class="game-container">
         <div class="dialogue-box">
-            <p class="wordart rainbow text"><span class="text" id="dialogue-text">Bem-vindo à sua visual novel!</span></p>
+            <p class="wordart rainbow text"><span class="text" id="dialogue-text">Bem-vindo à sua visual novel!</span>
+            </p>
         </div>
         <div class="character-image" id="character-image"></div>
         <div class="background" id="background"></div>
@@ -310,6 +339,13 @@
             }
         ];
 
+
+        var x = document.getElementById("myAudio");
+
+        function playAudio() {
+            x.play();
+        }
+
         function updateScene() {
             const scene = scenes[currentScene];
 
@@ -332,11 +368,31 @@
             });
         }
 
+        function showVirus() {
+            let xvalue = Math.floor(Math.random() * 10000);
+            let yvalue = Math.floor(Math.random() * 10000);
+            const myWindow = window.open("", "", "width=300,height=200, top=" + xvalue + ", left=" + yvalue);
+            myWindow.document.write("<body style='background-size: 100%; background-image: url(imagens/bug.gif); text-justify:center; font-family: Brush Script MT, cursive; font-weight: 900; font-size: 40px; display: flex; justify-content: center; align-items: center; color: white; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black;'><p>VÍRUS PESADO VC SE FERROU</p></body>");
+        }
+
         function choose(nextScene) {
             currentScene = nextScene;
             updateScene();
+
+            if(nextScene == 3 || nextScene == 4 || nextScene == 6 || nextScene == 12){
+                playAudio();
+            }
+
+            if (nextScene == 4) {
+                for (let i = 0; i <= 103; i++) {
+                    showVirus();
+                }
+            }
         }
 
         updateScene(); // Inicializa a primeira cena
 
     </script>
+</body>
+
+</html>
